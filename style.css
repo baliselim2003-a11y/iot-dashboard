@@ -1,0 +1,50 @@
+:root{
+  --bg:#0f1117;--card:#171a21;--border:#262b36;--ink:#e6e8ec;--muted:#8b93a1;
+  --accent:#3b82f6;--on:#10b981;--no:#ef4444;--off:#3a4150;
+  --hum:#38bdf8;--temp:#f59e0b;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;padding:20px 40px}
+.wrap{max-width:750px;margin:0 auto}
+h1{text-align:center;font-size:24px;font-weight:700;margin:0 0 22px;color:var(--ink)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 16px 24px;display:flex;flex-wrap:wrap;justify-content:center;gap:30px 90px}
+.led{display:flex;flex-direction:column;align-items:center}
+.bulb{width:75px;height:112px;border-radius:24px 24px 40px 40px;background:var(--off);transition:background .25s,box-shadow .25s;margin:4px 0 10px}
+.led.on .bulb{background:var(--on);box-shadow:0 0 22px 4px rgba(16,185,129,.35)}
+.led:not(.on) .bulb{background:var(--no);box-shadow:0 0 22px 4px rgba(239,68,68,.30)}
+.name{font-weight:700;font-size:18px;margin-bottom:8px}
+.btns{display:flex;gap:6px}
+button{border:0;border-radius:8px;padding:9px 16px;font:inherit;font-size:16px;color:#fff;cursor:pointer;transition:transform .1s,filter .2s}
+button:hover{filter:brightness(1.1)}
+button:active{transform:scale(.96)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.b-on{background:var(--on)}.b-off{background:var(--no)}
+.sec{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px 18px;margin-top:18px}
+.sec h2{font-size:15px;font-weight:700;margin:0 0 10px;color:var(--ink)}
+.gauges{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 50px}
+.g{width:210px;text-align:center}
+.g svg{display:block;width:100%;height:auto}
+.g circle{fill:none}
+.g .gv{transition:stroke-dasharray .8s}
+.g text{font-family:inherit}
+.g .lab{font-size:15px;font-weight:600;margin-top:-4px;color:var(--ink)}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.charts .sec{margin-top:0}
+.plot{display:grid;grid-template-columns:42px 1fr;grid-template-rows:130px auto;font-size:11px;color:var(--muted)}
+.yl{display:flex;flex-direction:column;justify-content:space-between;text-align:right;padding-right:6px;margin:-6px 0}
+.plot svg{width:100%;height:130px;display:block}
+.plot .gl{stroke:var(--border);stroke-width:1;vector-effect:non-scaling-stroke}
+.plot path{vector-effect:non-scaling-stroke}
+.xl{grid-column:2;display:flex;justify-content:space-between;margin-top:6px}
+#sens{margin-top:18px}
+.seg{display:flex;gap:4px;background:#12151c;border:1px solid var(--border);border-radius:10px;padding:4px;margin:0 0 14px}
+.seg button{flex:1;background:none;color:var(--muted);font-size:14px;font-weight:600;padding:8px 10px;border-radius:7px}
+.seg button:hover{filter:none;color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.m-t #gaugeH,.m-t #secH,.m-h #gaugeT,.m-h #secT{display:none}
+.m-t .charts,.m-h .charts{grid-template-columns:1fr}
+@media (max-width:560px){.charts{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.bulb,button{transition:none}}
+@media (max-width:560px){body{padding:16px}.card{gap:26px 40px}}
